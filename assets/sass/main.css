@@ -160,7 +160,7 @@ a:hover {
   backface-visibility: hidden;
   transform: translate3d(0,0,0);
   /* Set your background with this */
-  background: #fff url("images/test.png") bottom left;
+  background: #fff url("images/test1.png") bottom left;
   background-repeat: repeat-x;
   height: 100%;
   left: 0;
