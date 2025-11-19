@@ -207,7 +207,7 @@
 		@include vendor('transform', 'translate3d(0,0,0)');
 
 		/* Set your background with this */
-		background: _misc(bg);
+		background: _palette(bg) url('images/test.png') bottom left;
 
 		background-repeat: repeat-x;
 		height: 100%;
