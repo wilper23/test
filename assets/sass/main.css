@@ -80,9 +80,7 @@ html {
 }
 
 body {
-  background: #fff;
   background: transparent;
-  overflow: hidden;
 }
 body.is-preload *, body.is-preload *:before, body.is-preload *:after {
   animation: none !important;
@@ -147,12 +145,7 @@ a:hover {
 }
 #wrapper {
   animation: wrapper 3s forwards;
-  height: 100%;
-  left: 0;
   opacity: 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
 }
 
 /* BG */
@@ -208,20 +201,25 @@ a:hover {
 
 /* Main */
 #main {
-  height: 100%;
-  left: 0;
-  position: fixed;
-  text-align: center;
-  top: 0;
-  width: 100%;
+  position: relative;
+  z-index: 10;
 }
-#main:before {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  margin-right: 0;
-  vertical-align: middle;
-  width: 1px;
+
+.scroll-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 0;
+}
+.scroll-section#intro-section #header {
+  top: 0;
+  vertical-align: initial;
 }
 
 /* Header */
@@ -254,8 +252,6 @@ a:hover {
   opacity: 0;
   position: relative;
   text-align: center;
-  top: -1em;
-  vertical-align: middle;
   width: 90%;
 }
 #header h1 {

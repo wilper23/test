@@ -125,9 +125,8 @@
 		}
 
 	body {
-		background: _palette(bg);
-		background: transparent;
-		overflow: hidden;
+		background: transparent; // Gör bakgrunden transparent så #bg syns
+		// overflow: hidden; // Ta bort denna för att tillåta scrollning
 
 		// Stops initial animations until page loads.
 			&.is-preload {
@@ -191,13 +190,9 @@
 	}
 
 	#wrapper {
-		@include vendor('animation', 'wrapper #{_duration(wrapper)} forwards');
-		height: 100%;
-		left: 0;
-		opacity: 0;
-		position: fixed;
-		top: 0;
-		width: 100%;
+		// Ta bort fast positionering för att tillåta innehållet att scrolla
+		@include vendor('animation', 'wrapper #{_duration(wrapper)} forwards'); // Behåll animationen
+		opacity: 0; // Behåll initial opacitet för animation
 	}
 
 /* BG */
@@ -245,20 +240,35 @@
 /* Main */
 
 	#main {
-		height: 100%;
-		left: 0;
-		position: fixed;
-		text-align: center;
-		top: 0;
-		width: 100%;
+		// Ta bort fast positionering för att tillåta innehållet att scrolla
+		position: relative; // Viktigt för att z-index ska fungera
+		z-index: 10; // Se till att innehållet ligger ovanför #bg och #overlay
+		// height, left, top, width tas bort för att det ska flöda normalt
+		// text-align: center; // Flytta text-align till sektionerna
 
-		&:before {
-			content: '';
-			display: inline-block;
-			height: 100%;
-			margin-right: 0;
-			vertical-align: middle;
-			width: 1px;
+		// &:before tas bort då vi använder flexbox för centrering i sektionerna
+	}
+
+	// Nya stilar för scrollbara sektioner
+	.scroll-section {
+		min-height: 100vh; // Varje sektion tar upp minst hela skärmhöjden
+		display: flex; // Använd flexbox för enkel centrering
+		flex-direction: column; // Innehållet staplas vertikalt
+		align-items: center; // Centrera horisontellt
+		justify-content: center; // Centrera vertikalt
+		padding: 2em; // Lite utfyllnad
+		text-align: center; // Centrera texten
+		color: _palette(fg); // Textfärg
+		// Lägg till en bakgrundsfärg för sektionerna för bättre läsbarhet över den fasta bakgrunden
+		background-color: rgba(0, 0, 0, 0.4);
+		margin-bottom: 0; // Inget mellanrum mellan sektioner som tar upp hela skärmen
+
+		// Justera header-specifika stilar för att passa in i flexbox-layouten
+		&#intro-section {
+			#header {
+				top: 0; // Ta bort den negativa toppen
+				vertical-align: initial; // Återställ vertical-align
+			}
 		}
 	}
 
@@ -283,8 +293,8 @@
 		opacity: 0;
 		position: relative;
 		text-align: center;
-		top: -1em;
-		vertical-align: middle;
+		// top: -1em; // Tas bort, hanteras av flexbox
+		// vertical-align: middle; // Tas bort, hanteras av flexbox
 		width: 90%;
 
 		h1 {
