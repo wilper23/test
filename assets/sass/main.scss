@@ -126,6 +126,7 @@
 
 	body {
 		background: _palette(bg);
+		background: transparent;
 		overflow: hidden;
 
 		// Stops initial animations until page loads.

@@ -81,6 +81,7 @@ html {
 
 body {
   background: #fff;
+  background: transparent;
   overflow: hidden;
 }
 body.is-preload *, body.is-preload *:before, body.is-preload *:after {
